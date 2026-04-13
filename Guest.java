@@ -1,9 +1,9 @@
 import java.time.LocalDate;
 import java.util.*;
 
-public class Guest extends User implements Payable{
+public class Guest extends User {
 
-    enum genders{
+    static enum genders{
         male,
         female
     }
@@ -14,23 +14,59 @@ public class Guest extends User implements Payable{
     private String address;
     private genders gender;
     private roomPreferences roomPreference;
-    private int guestcount = 0;
+    private int index;
+    private static int guestcount = 0;
 
+    // Getters
+    public double getBalance() {
+        return balance;
+    }
 
-    Guest(String username, String password, LocalDate dateOfBirth, double balance, String address, genders gender, roomPreferences roomPreference){
-        username = username;
-        password = password;
-        dateOfBirth = dateOfBirth;
-        balance = balance;
-        address = address;
-        gender = gender;
-        roomPreference = roomPreference;
+    public String getAddress() {
+        return address;
+    }
+
+    public genders getGender() {
+        return gender;
+    }
+    // Getters
+
+    //Setters
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setGender(genders gender) {
+        this.gender = gender;
+    }
+
+    //Setters
+
+    Guest(String username, String password, LocalDate dateOfBirth, double balance, String address, genders gender, roomPreferences roomPreference, int index){
+        setUsername(username);
+        setPassword(password);
+        setDateOfBirth(dateOfBirth);
+        this.balance = balance;
+        this.address = address;
+        this.gender = gender;
+        this.roomPreference = roomPreference;
+        this.index = index;
         guestcount++;
 
 
     }
 
+
+
     public static void register(){
+
+        Scanner scan = new Scanner(System.in);
+
         System.out.print("Please enter your username: ");
         String name = scan.next();
 
@@ -80,30 +116,32 @@ public class Guest extends User implements Payable{
         System.out.print("Please enter your preferred floor: ");
         int floor = scan.nextInt();
 
-        roomPreferences roompreferences;
-        roompreferences.roomtype = roomtype;
-        roompreferences.floor = floor;
+        roomPreferences roompreferences = new roomPreferences(roomtype, floor);
+
 
         System.out.print("Please enter your gender, must be either male or female: ");
+        String genderstr;
         while (true){
-            String genderstr = scan.next();
+            genderstr = scan.next();
 
-            if (genderstr.toLowerCase != "male" && genderstr.toLowerCase != "female"){
+            if (genderstr.toLowerCase() != "male" && genderstr.toLowerCase() != "female"){
                 System.out.print("Invalid gender, please try again");
-                String genderstr = scan.next();
+                genderstr = scan.next();
             }
             else{
                 break;
             }
         }
 
-        gender genders = gender.valueof(genderstr);
+        genders gender = genders.valueOf(genderstr);
 
-        Guest(name,password,dateOfBirth,balance,address,genders,roompreferences);
+        Guest guest = new Guest(name,password,dateOfBirth,balance,address,gender,roompreferences,guestcount);
 
     }
 
     public static void login(){
+
+        Scanner scan = new Scanner(System.in);
 
         System.out.print("Please enter your username");
         String username = scan.next();
@@ -112,16 +150,19 @@ public class Guest extends User implements Payable{
         System.out.print("Please enter your password");
         String password = scan.next();
 
-        for (int i = 0; i < guestcount; i++){
+        boolean found = false;
+        while ( !found ){
 
-            if (guests[i].username == username && guests[i].password == password){
-                bool found = true;
-                Database.currentuser = guests[i];
+            for (int i = 0; i < guestcount; i++) {
+
+                if (Database.getGuest(i).getUsername().equals(username) && Database.getGuest(i).getPassword().equals(password)) {
+                    found = true;
+                    Database.setCurrentuser(Database.getGuest(i));
+                }
             }
-        }
-
-        if (not found){
-            System.out.println("Invalid login, if you would like to terminate enter x, otherwise try again.")
+            if ( !found){
+                System.out.println("Invalid login, please try again");
+            }
         }
     }
 
@@ -131,7 +172,7 @@ public class Guest extends User implements Payable{
         System.out.println("Guess payment complete. New balance: " + balance);
     }
 
-    boolean funds(double amount){
+    boolean validatefunds(double amount){
 
         if (amount>balance){
             return false;
@@ -142,3 +183,4 @@ public class Guest extends User implements Payable{
         }
     }
 }
+
