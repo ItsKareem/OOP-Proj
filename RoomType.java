@@ -1,4 +1,11 @@
 public class RoomType {
+
+    public enum types{
+        SINGLE,
+        DOUBLE,
+        SUITE
+    }
+    private types name;
     private String name;
     private double pricePerNight;
 
@@ -11,7 +18,7 @@ public class RoomType {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("RoomType name cannot be empty.");
         }
-        this.name = name;
+        this.name = types.valueOf(name);
     }
 
     public void setPricePerNight(double pricePerNight) {
@@ -21,7 +28,7 @@ public class RoomType {
         this.pricePerNight = pricePerNight;
     }
 
-    public String getName() {
+    public types getName() {
         return name;
     }
 
