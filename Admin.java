@@ -85,6 +85,18 @@ public class Admin extends Staff{
  public void deleteRoomType(String roomTypeName, List<RoomType> roomTypeDatabase){
   roomTypeDatabase.removeif(roomType -> roomType.getRoomTypeName().equals(roomTypeName));
  }
+
+ public void updateRoomType(int roomNumber, String newType, List<Room> rooms) {
+  for (Room r : rooms) {
+   if (r.getRoomNumber() == roomNumber) {
+      r.setRoomType(newType); 
+      return;
+      }
+   }
+ }
+
+
+
 }
 
 
