@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.*;
+import java.util.Scanner;
 
 public class Admin extends Staff{
  public Admin(String username, String password, LocalDate dateOfBirth, int workingHours){
@@ -95,7 +96,30 @@ public class Admin extends Staff{
    }
  }
 
+ public void displayMenu(List<Room> allRooms, List<Amenity> allAmenities) {
+  Scanner input = new Scanner(System.in);
+  System.out.println("\n    Admin Management    ");
+  System.out.println("1. Add Room\n2. View Rooms\n3. Delete Room");
+  System.out.print("Choice: ");
+  int choice = input.nextInt();
 
+  switch (choice) {
+      case 1:
+        System.out.print("Number: "); int num = input.nextInt();
+        System.out.print("Type: "); String type = input.next();
+        System.out.print("Price: "); double price = input.nextDouble();
+          addRoom(new Room(num, type, price), allRooms);
+            break;
+       case 2:
+        viewAllRooms(allRooms);
+            break;
+       case 3:
+        System.out.print("Room Number to delete: ");
+        int toDelete = input.nextInt();
+        deleteRoom(toDelete, allRooms);
+            break;
+        }
+    }
 
 }
 
