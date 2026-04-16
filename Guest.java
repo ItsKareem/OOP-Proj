@@ -1,7 +1,5 @@
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.*;
-import java.time.*;
 
 public class Guest extends User{
 
@@ -250,7 +248,7 @@ public class Guest extends User{
         }
     }
 
-    public void viewreservation(){
+    public void viewreservations(){
         boolean found = false;
         for (int i = 0; i < Database.getReservations().size(); i++) {
 
@@ -267,8 +265,21 @@ public class Guest extends User{
         }
     }
 
-    public void cancelreservation(int reservationindex) throws ReservationAlreadyCancelledException{
+    public void cancelreservation(int roomnumber) throws ReservationAlreadyCancelledException{
 
+        int reservationindex = 0;
+        boolean found = false;
+        for (int i = 0; i < Database.getReservations().size(); i++) {
+            if (Database.getReservation(i).getRoomRefrence() == roomnumber) {
+                reservationindex = i;
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            throw new IllegalArgumentException("You do not have any such reservation booked.");
+        }
         Reservation reservation = Database.getReservation(reservationindex);
         if (reservation.getReservationStatus() == Reservation.ReservationStatus.CANCELLED)
             throw new ReservationAlreadyCancelledException("Reservation is already cancelled.");

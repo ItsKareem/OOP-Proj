@@ -31,6 +31,7 @@ public class Database{
     public static void addGuest(Guest g){
 
         guests.add(g);
+        users.add(g);
     }
     public static Guest getGuest(int index){
         if (index > 0 && index < guests.size())
@@ -90,7 +91,9 @@ public class Database{
 
     // Admin
     public static void addAdmin(Admin admin){
+
         admins.add(admin);
+        users.add(admin);
     }
     public static Admin getAdmin(int index){
         if (index > 0 && index < admins.size())
@@ -105,7 +108,9 @@ public class Database{
 
     // Receptionist
     public static void addReceptionist(Receptionist receptionist){
+
         receptionists.add(receptionist);
+        users.add(receptionist);
     }
     public static Receptionist getReceptionist(int index){
         if (index > 0 && index < receptionists.size())
