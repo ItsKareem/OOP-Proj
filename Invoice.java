@@ -46,12 +46,15 @@ public class Invoice implements Payable{
         System.out.println("CASH\nCREDIT_CARD\nONLINE\n");
     }
 
-    public void processpayment(double amount,  PaymentMethod method) {
+    public void processPayment(double amount, PaymentMethod method) {
 
         this.amountPaid += amount;
         this.method=method;
         this.paymentDate=LocalDate.now();
 
+    }
+    public boolean isPaid() {
+        return this.amountPaid >= totalAmount;
     }
 
 

@@ -22,14 +22,13 @@ public class Main {
                 throw new IllegalArgumentException("Invalid choice");
             }
 
-            System.out.print("1.View Balance and Active Reservations \n" + "2. View Available Rooms \n" + "3. Cancel Reservation \n" + "4. Checkout and Pay \n");
+            System.out.print("1.View Profile and Active Reservations \n" + "2. View Available Rooms \n" + "3. Cancel Reservation \n" + "4. Checkout and Pay \n");
             System.out.print("Type your choice 1-4: ");
             int option = scan.nextInt();
             switch (option){
                 case 1:
+                    ( (Guest) Database.getCurrentUser() ).displayDetails();
                     ( (Guest) Database.getCurrentUser() ).viewreservations();
-                    System.out.print("Balance: ");
-                    ( (Guest) Database.getCurrentUser() ).getBalance();
                     break;
                 case 2:
                     ( (Guest) Database.getCurrentUser() ).viewavailablerooms();
@@ -40,6 +39,9 @@ public class Main {
                     ( (Guest) Database.getCurrentUser() ).cancelreservation(roomnumber);
                     break;
                 case 4:
+                    System.out.print("Please enter the room number of the reservation you want to check out from: ");
+                    int roomnumber2 = scan.nextInt();
+                    ( (Guest) Database.getCurrentUser()).checkoutandPay(roomnumber2);
 
 
             }
@@ -47,10 +49,10 @@ public class Main {
         }
 
         else if (choice == 'a'){
-
+            Admin.login();
         }
         else if (choice == 'r'){
-
+            Receptionist.login();
         }
         else{
             throw new IllegalArgumentException("Invalid choice");

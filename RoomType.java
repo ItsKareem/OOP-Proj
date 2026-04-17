@@ -1,4 +1,4 @@
-public class RoomType {
+public class RoomType implements Manageable {
 
     private String name;
     private double pricePerNight;
@@ -6,6 +6,7 @@ public class RoomType {
     public RoomType(String name, double pricePerNight) {
         setName(name);
         setPricePerNight(pricePerNight);
+        Database.addRoomType(this);
     }
 
     public void setName(String name) {
@@ -29,4 +30,20 @@ public class RoomType {
     public double getPricePerNight() {
         return pricePerNight;
     }
+
+    public void add(){
+        Database.addRoomType(this);
+    };
+
+    public void delete(){
+        Database.getRoomTypes().remove(this);
+    };
+    public void read(){
+        System.out.println("Room Type Name: " + this.getName());
+        System.out.println("Room Type Price: " + this.getPricePerNight());
+    };
+    public void update(Manageable M){
+        this.setName( ((RoomType) M).getName());
+        this.setPricePerNight( ((RoomType) M).getPricePerNight());
+    };
 }

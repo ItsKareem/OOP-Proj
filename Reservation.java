@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Reservation {
 
@@ -11,7 +12,7 @@ public class Reservation {
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
     private ReservationStatus reservationStatus;
-    public static int reservationCount = 0;
+    private Invoice invoice;
 
     public Reservation(LocalDate checkInDate, LocalDate checkOutDate, int guestReference, int roomReference, String reservationStatus) {
         this.checkInDate = checkInDate;
@@ -20,7 +21,11 @@ public class Reservation {
         this.roomReference = roomReference;
         this.reservationStatus = ReservationStatus.valueOf(reservationStatus.toUpperCase());
 
-        reservationCount++;
+        long daysBetween = ChronoUnit.DAYS.between(this.getCheckInDate(), this.getCheckOutDate());
+        double total = Database.getRoom(roomReference).getRoomType().getPricePerNight() * daysBetween;
+
+        this.invoice = new Invoice(total);
+
         Database.addReservation(this);
     }
 
@@ -57,7 +62,7 @@ public class Reservation {
         this.guestReference = guestRefrence;
     }
 
-    public int getRoomRefrence() {
+    public int getRoomReference() {
         return this.roomReference;
     }
 
@@ -65,6 +70,15 @@ public class Reservation {
         this.roomReference = roomRefrence;
 
     }
+
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
+    }
+
     public void showReservationDetails() {
         System.out.println("======= Reservation Details =======");
         System.out.println("Guest Reference: " + guestReference);

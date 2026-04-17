@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class Room {
+public class Room implements Manageable {
     private int roomNumber;
     private RoomType roomType;
     private List<Amenity> amenities;
@@ -8,7 +8,7 @@ public class Room {
     public static int roomCount = 0;
 
 
-    public Room(int roomNumber, RoomType roomType, List<Amenity> amenities) {
+    public Room(RoomType roomType, List<Amenity> amenities) {
         setRoomNumber(roomCount);
         setRoomType(roomType);
         setAmenities(amenities);
@@ -74,5 +74,25 @@ public class Room {
         }
 
         System.out.println("------------------------");
+    }
+
+    public void read() {
+        this.displayRoomDetails();
+    }
+
+    public void delete(){
+        Database.getRooms().remove(this);
+        Room.roomCount--;
+    }
+
+    public void add(){
+        Database.getRooms().add(this);
+    }
+
+    public void update(Manageable M){
+        this.setRoomNumber( ((Room) M).getRoomNumber());
+        this.setRoomType( ((Room) M).getRoomType());
+        this.setAmenities( ((Room) M).getAmenities());
+        this.setAvailable( ((Room) M).isAvailable());
     }
 }

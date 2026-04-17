@@ -1,0 +1,350 @@
+@startuml
+
+title __OOP-PROJ's Class Diagram__\n
+
+   namespace Admin  {
+    class Admin {
+        + Admin()
+        + add()
+        + createAmenity()
+        + createRoom()
+        + createRoomType()
+        + delete()
+        {static} + login()
+        + read()
+        + update()
+    }
+  }
+  
+
+   namespace Amenity {
+    class Amenity {
+        - name : String
+        + Amenity()
+        + add()
+        + delete()
+        + getName()
+        + read()
+        + setName()
+        + update()
+    }
+  }
+  
+
+   namespace Database {
+    class Database {
+        {static} - admins : List<Admin>
+        {static} - amenities : List<Amenity>
+        {static} - currentUser : User
+        {static} - guests : List<Guest>
+        {static} - invoices : List<Invoice>
+        {static} - receptionists : List<Receptionist>
+        {static} - reservations : List<Reservation>
+        {static} - roomTypes : List<RoomType>
+        {static} - rooms : List<Room>
+        {static} - users : List<User>
+        {static} + addAdmin()
+        {static} + addAmenity()
+        {static} + addGuest()
+        {static} + addInvoice()
+        {static} + addReceptionist()
+        {static} + addReservation()
+        {static} + addRoom()
+        {static} + addRoomType()
+        {static} + getAdmin()
+        {static} + getAdmins()
+        {static} + getAmenities()
+        {static} + getAmenity()
+        {static} + getCurrentUser()
+        {static} + getGuest()
+        {static} + getGuests()
+        {static} + getInvoice()
+        {static} + getInvoices()
+        {static} + getReceptionist()
+        {static} + getReceptionists()
+        {static} + getReservation()
+        {static} + getReservations()
+        {static} + getRoom()
+        {static} + getRoomType()
+        {static} + getRoomTypes()
+        {static} + getRooms()
+        {static} + getUsers()
+        {static} + setCurrentUser()
+    }
+  }
+  
+
+   namespace Guest {
+    class Guest {
+        ~ scan : Scanner
+        - address : String
+        - balance : double
+        {static} - guestcount : int
+        - index : int
+        + cancelreservation()
+        + checkoutandPay()
+        + displayDetails()
+        + getAddress()
+        + getBalance()
+        + getGender()
+        + getIndex()
+        {static} + login()
+        + makereservation()
+        {static} + register()
+        + setAddress()
+        + setBalance()
+        + setGender()
+        + setIndex()
+        + viewavailablerooms()
+        + viewreservations()
+        ~ Guest()
+    }
+  }
+  
+
+   namespace Genders {
+    enum Genders {
+      female
+      male
+    }
+  }
+  
+
+   namespace InvalidPaymentException {
+    class InvalidPaymentException {
+        + InvalidPaymentException()
+    }
+  }
+  
+
+   namespace Invoice {
+    class Invoice {
+        - amountPaid : double
+        - paymentDate : LocalDate
+        - totalAmount : double
+        + Invoice()
+        + Invoice()
+        + getMethod()
+        + getPaymentDate()
+        + getTotalAmount()
+        + isPaid()
+        + processPayment()
+        + setMethod()
+        + setPaymentDate()
+        + setTotalAmount()
+        {static} + showPaymentMethods()
+    }
+  }
+  
+
+   namespace Main {
+    class Main {
+        {static} + main()
+    }
+  }
+  
+
+   namespace Manageable {
+    interface Manageable {
+        {abstract} + add()
+        {abstract} + delete()
+        {abstract} + read()
+        {abstract} + update()
+    }
+  }
+  
+
+   namespace Payable {
+    interface Payable {
+        {abstract} + isPaid()
+        {abstract} + processPayment()
+    }
+  }
+  
+
+   namespace PaymentMethod {
+    enum PaymentMethod {
+      CASH
+      CREDIT_CARD
+      ONLINE
+    }
+  }
+  
+
+   namespace Receptionist {
+    class Receptionist {
+        + Receptionist()
+        {static} + login()
+        + processCheckIn()
+        + processCheckOut()
+    }
+  }
+  
+
+   namespace Reservation {
+    class Reservation {
+        - checkInDate : LocalDate
+        - checkOutDate : LocalDate
+        - guestReference : int
+        - roomReference : int
+        + Reservation()
+        + getCheckInDate()
+        + getCheckOutDate()
+        + getGuestReference()
+        + getInvoice()
+        + getReservationStatus()
+        + getRoomReference()
+        + setCheckInDate()
+        + setCheckOutDate()
+        + setGuestReference()
+        + setInvoice()
+        + setReservationStatus()
+        + setRoomRefrence()
+        + showReservationDetails()
+    }
+  }
+  
+
+   namespace ReservationStatus {
+    enum ReservationStatus {
+      CANCELLED
+      COMPLETED
+      CONFIRMED
+      PENDING
+    }
+  }
+  
+
+   namespace ReservationAlreadyCancelledException {
+    class ReservationAlreadyCancelledException {
+        + ReservationAlreadyCancelledException()
+    }
+  }
+  
+
+   namespace Room {
+    class Room {
+        {static} + roomCount : int
+        - amenities : List<Amenity>
+        - isAvailable : boolean
+        - roomNumber : int
+        + Room()
+        + add()
+        + delete()
+        + displayRoomDetails()
+        + getAmenities()
+        + getRoomNumber()
+        + getRoomType()
+        + isAvailable()
+        + read()
+        + setAmenities()
+        + setAvailable()
+        + setRoomType()
+        + update()
+        - setRoomNumber()
+    }
+  }
+  
+
+   namespace RoomNotAvailableException {
+    class RoomNotAvailableException {
+        + RoomNotAvailableException()
+    }
+  }
+  
+
+   namespace RoomType {
+    class RoomType {
+        - name : String
+        - pricePerNight : double
+        + RoomType()
+        + add()
+        + delete()
+        + getName()
+        + getPricePerNight()
+        + read()
+        + setName()
+        + setPricePerNight()
+        + update()
+    }
+  }
+  
+
+   namespace Staff {
+    abstract class Staff {
+        - workingHours : int
+        + Staff()
+        + getRole()
+        + viewAllGuests()
+        + viewAllReservations()
+        + viewAllRooms()
+    }
+  }
+  
+
+  namespace  Role {
+    enum Role {
+      ADMIN
+      RECEPTIONIST
+    }
+  }
+  
+
+   namespace User {
+    abstract class User {
+        - dateOfBirth : LocalDate
+        - password : String
+        - username : String
+        + getDateOfBirth()
+        + getPassword()
+        + getUsername()
+        {static} + login()
+        + setDateOfBirth()
+        + setPassword()
+        + setUsername()
+    }
+  }
+  
+
+   namespace roomPreferences {
+    class roomPreferences {
+        - floor : int
+        + getFloor()
+        + getRoomType()
+        + roomPreferences()
+        + setFloor()
+        + setRoomType()
+    }
+  }
+  
+
+  Admin -up-|> Staff
+  Amenity .up.|> Manageable
+  Guest -up-|> User
+  Guest o-- Guest.Genders : gender
+  Guest o-- roomPreferences : roomPreference
+  Guest +-down- Guest.Genders
+  Invoice .up.|> Payable
+  Invoice o-- Payable.PaymentMethod : method
+  Payable +-down- Payable.PaymentMethod
+  Receptionist -up-|> Staff
+  Reservation o-- Invoice : invoice
+  Reservation o-- Reservation.ReservationStatus : reservationStatus
+  Reservation +-down- Reservation.ReservationStatus
+  Room .up.|> Manageable
+  Room o-- RoomType : roomType
+  RoomType .up.|> Manageable
+  Staff -up-|> User
+  Staff o-- Staff.Role : role
+  Staff +-down- Staff.Role
+  roomPreferences o-- RoomType : roomtype
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

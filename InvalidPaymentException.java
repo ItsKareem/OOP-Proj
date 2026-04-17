@@ -1,4 +1,4 @@
-public class InvalidPaymentException extends Exception{
+public class InvalidPaymentException extends RuntimeException{
     public InvalidPaymentException(String message){
         super(message);
     }

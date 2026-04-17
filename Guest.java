@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 public class Guest extends User{
@@ -171,6 +172,8 @@ public class Guest extends User{
         gender = Genders.valueOf(genderupper);
         Guest guest = new Guest(name,password,dateOfBirth,balance,address,gender,roompreferences,guestcount);
 
+        Database.setCurrentUser(guest);
+
     }
 
     public static void login(){
@@ -243,7 +246,7 @@ public class Guest extends User{
         if (found){
             int guestReference = this.index;
 
-            Reservation reservation= new Reservation(checkIn,checkOut,guestReference,roomReference,"COMPLETED");
+            Reservation reservation= new Reservation(checkIn,checkOut,guestReference,roomReference,"PENDING");
             System.out.println("Reservation Successful.");
         }
     }
@@ -256,7 +259,7 @@ public class Guest extends User{
                 found = true;
                 System.out.println("Checkin Date: " + Database.getReservation(i).getCheckInDate());
                 System.out.println("Checkout Date: " + Database.getReservation(i).getCheckOutDate());
-                Database.getRoom(Database.getReservation(i).getRoomRefrence()).displayRoomDetails();
+                Database.getRoom(Database.getReservation(i).getRoomReference()).displayRoomDetails();
                 System.out.println("Reservation Status: " + Database.getReservation(i).getReservationStatus());
             }
         }
@@ -270,7 +273,7 @@ public class Guest extends User{
         int reservationindex = 0;
         boolean found = false;
         for (int i = 0; i < Database.getReservations().size(); i++) {
-            if (Database.getReservation(i).getRoomRefrence() == roomnumber) {
+            if (Database.getReservation(i).getRoomReference() == roomnumber) {
                 reservationindex = i;
                 found = true;
                 break;
@@ -292,13 +295,33 @@ public class Guest extends User{
     }
 
 
-    public void checkoutandPay(double total , Payable bill) throws InvalidPaymentException{
+    public void checkoutandPay(int roomnumber){
 
-        System.out.println("Please choose your desired payment method: ");
-        Invoice.showPaymentMethods();
+        int reservationindex = 0;
+        boolean found = false;
+        for (int i = 0; i < Database.getReservations().size(); i++) {
+            if (Database.getReservation(i).getRoomReference() == roomnumber) {
+                found = true;
+                reservationindex = i;
+                if (Database.getReservation(i).getGuestReference() != this.index) {
+                    throw new InvalidPaymentException("You do not any have such reservation booked.");
+                }
+                break;
+            }
+        }
+        if (!found)
+            throw new IllegalArgumentException("You do not have any such reservation booked.");
+        Payable bill = Database.getReservation(reservationindex).getInvoice();
+
+        long daysBetween = ChronoUnit.DAYS.between(Database.getReservation(reservationindex).getCheckInDate(), Database.getReservation(reservationindex).getCheckOutDate());
+
+        double total = Database.getRoom(roomnumber).getRoomType().getPricePerNight() * daysBetween;
 
         if (this.balance < total)
             throw new InvalidPaymentException("Insufficient balance.");
+
+        System.out.println("Please choose your desired payment method: ");
+        Invoice.showPaymentMethods();
 
         String method = scan.next().toUpperCase();
         if (!method.equals("CREDIT_CARD") && !method.equals("CASH") && !method.equals("ONLINE"))
@@ -306,9 +329,21 @@ public class Guest extends User{
 
         Payable.PaymentMethod paymentMethod = Payable.PaymentMethod.valueOf(method);
 
-        bill.processpayment(total, paymentMethod);
+        bill.processPayment(total, paymentMethod);
 
 
+    }
+
+    public void displayDetails(){
+        System.out.println("Username: " + getUsername());
+        System.out.println("Password: " + getPassword());
+        System.out.println("Date of Birth: " + getDateOfBirth());
+        System.out.println("Balance: " + getBalance());
+        System.out.println("Address: " + getAddress());
+        System.out.println("Gender: " + getGender());
+        System.out.println("Room type name preference: " + roomPreference.getRoomType().getName());
+        System.out.println("Room price per night preference: " + roomPreference.getRoomType().getPricePerNight());
+        System.out.println("Floor preference: " + roomPreference.getFloor());
     }
 }
 

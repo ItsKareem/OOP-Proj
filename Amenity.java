@@ -1,8 +1,10 @@
-public class Amenity {
+public class Amenity implements Manageable{
     private String name;
 
     public Amenity(String name) {
+
         setName(name);
+        Database.addAmenity(this);
     }
 
     public void setName(String name) {
@@ -13,4 +15,17 @@ public class Amenity {
     }
 
     public String getName() { return name; }
+
+    public void add(){
+        Database.addAmenity(this);
+    };
+    public void delete(){
+        Database.getAmenities().remove(this);
+    };
+    public void read(){
+        System.out.println("Name: " + getName());
+    };
+    public void update(Manageable M){
+        this.setName( ((Amenity)M).getName());
+    };
 }
