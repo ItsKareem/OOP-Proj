@@ -1,3 +1,5 @@
+package Backend;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -9,7 +11,7 @@ public class Guest extends User{
         female
     }
 
-    Scanner scan = new Scanner(System.in);
+    public Scanner scan = new Scanner(System.in);
 
     private double balance;
     private String address;

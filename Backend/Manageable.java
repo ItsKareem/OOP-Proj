@@ -1,3 +1,5 @@
+package Backend;
+
 public interface Manageable {
 
     void add();

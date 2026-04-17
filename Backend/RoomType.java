@@ -1,3 +1,5 @@
+package Backend;
+
 public class RoomType implements Manageable {
 
     private String name;

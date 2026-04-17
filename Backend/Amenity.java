@@ -1,3 +1,5 @@
+package Backend;
+
 public class Amenity implements Manageable{
     private String name;
 
