@@ -4,6 +4,8 @@ public interface Payable {
         CASH, CREDIT_CARD, ONLINE
     }
 
-    void processpayment(double amount, PaymentMethod method) ;
+    void processPayment(double amount, PaymentMethod method);
+
+    boolean isPaid();
 
 }

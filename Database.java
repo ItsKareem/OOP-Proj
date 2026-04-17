@@ -11,6 +11,7 @@ public class Database{
     private final static List<Receptionist> receptionists = new ArrayList<>();
     private final static List<User> users = new ArrayList<>();
     private final static List<RoomType> roomTypes = new ArrayList<>();
+    private final static List<Amenity> amenities = new ArrayList<>();
 
     private static User currentUser;
 
@@ -137,5 +138,18 @@ public class Database{
     }
 
 
+    // Amenity
+    public static void addAmenity(Amenity amenity){
+        amenities.add(amenity);
+    }
+    public static Amenity getAmenity(int index){
+        if (index > 0 && index < amenities.size())
+            return amenities.get(index);
+        else
+            throw new IndexOutOfBoundsException("Amenity with such index does not exist");
+    }
+    public static List<Amenity> getAmenities(){
+        return amenities;
+    }
 
 }
