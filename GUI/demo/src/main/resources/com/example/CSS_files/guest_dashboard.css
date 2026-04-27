@@ -141,10 +141,8 @@
 
 .ledger-amount{
 -fx-text-fill:black;
- -fx-font-size: 24px;
-  -fx-font-weight: bold;
-
-
+-fx-font-size: 24px;
+-fx-font-weight: bold;
 }
 
 .ledger-date{}
@@ -163,7 +161,7 @@
     -fx-effect: dropshadow(three-pass-box, rgba(26, 95, 122, 0.4), 8, 0.0, 0, 4);
 
     /* Vertical Padding for Height */
-    -fx-padding: 7 35;
+    -fx-padding: 10 35;
     
     /* Ensure cursor is a pointer */
     -fx-cursor: hand;
