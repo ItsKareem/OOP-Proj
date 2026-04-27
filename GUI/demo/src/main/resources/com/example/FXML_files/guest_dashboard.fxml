@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane stylesheets="@../CSS_files/guest_dashboard.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GuestDashboardController">
+
+    <!-- MAIN CONTENT -->
+    <left>
+        <VBox prefHeight="559.0" prefWidth="194.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+
+            <VBox spacing="10">
+                <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="sidebar-header">
+                    <FontIcon iconColor="#1A5F7A" iconLiteral="fas-user-circle" iconSize="30" />
+                    <Label styleClass="logo-text" text="Guest Name">
+                        <font>
+                            <Font size="35.0" />
+                        </font>
+                    </Label>
+                </HBox>
+
+                <Label styleClass="sub-logo-text" />
+                <Button styleClass="sidebar-btn, active-btn" text="Dashboard" />
+                <Button styleClass="sidebar-btn" text="Reservations" />
+                <Button styleClass="sidebar-btn" text="Room Browsing" />
+                
+
+                <Region prefHeight="200.0" prefWidth="200.0" />
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS" />
+
+            <HBox spacing="10.0" styleClass="logout-btn-container">
+                <FontIcon iconColor="#1A5F7A" iconLiteral="fas-sign-out-alt" iconSize="22" />
+                <Button styleClass="logout-btn" text="Logout" />
+            </HBox>
+        </VBox>
+    </left>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+            <VBox spacing="30.0" styleClass="main-content-box">
+                <padding>
+                    <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                </padding>
+
+                   <!-- 1. HEADER SECTION -->
+                <VBox spacing="5.0">
+                    <Label styleClass="page-title" text="Welcome back, Guest Name." />
+                    <Label styleClass="page-subtitle" text="Here is an overview of your upcoming stays and current ledger." />
+                </VBox>
+
+                   <!-- 2. SUMMARY CARDS SECTION -->
+                <HBox spacing="20.0">
+                    <!-- Loyalty Card (Expands) -->
+                    <VBox spacing="40.0" styleClass="loyalty-card" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                        </padding>
+
+                           <!-- Top Row: Badge & Redeem Button -->
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <FontIcon iconColor="#d4af37" iconLiteral="fas-award" iconSize="24" />
+                            <Label styleClass="loyalty-tier-text" text="Platinum Member" />
+                        </HBox>
+
+                           <!-- Bottom Row: Points Info -->
+                        <VBox spacing="0.0">
+                            <Label styleClass="loyalty-subtitle" text="AVAILABLE POINTS" />
+                            <Label styleClass="points-amount" text="142,500" />
+                        </VBox>
+                    </VBox>
+
+                       <!-- Ledger Card -->
+                    <VBox styleClass="ledger-card">
+                        <HBox spacing="10.0">
+                            <FontIcon iconColor="#1A5F7A" iconLiteral="fas-wallet" iconSize="24" />
+                            <Label styleClass="ledger-card-title" text="Current Ledger" />
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
+                        </HBox>
+                        <Label styleClass="ledger-amount" text="\$430,000" />
+                        <Label styleClass="ledger-date" text="Due by June 19, 2026">
+                     <VBox.margin>
+                        <Insets bottom="40.0" />
+                     </VBox.margin>
+                  </Label>
+                        <Button styleClass="ledger-btn" text="View Invoice" />
+                    </VBox>
+                </HBox>
+
+                   <!-- 3. RESERVATIONS SECTION -->
+                <VBox spacing="15.0">
+                    <!-- Section Header -->
+                    <HBox alignment="CENTER_LEFT">
+                        <Label styleClass="section-title" text="Active Reservations" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label styleClass="text-link" text="View Past Stays →" />
+                    </HBox>
+
+                       <!-- Reservation Card 1 -->
+                    <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="reservation-card">
+                        <!-- Date Box -->
+                        <VBox alignment="CENTER" prefHeight="75.0" prefWidth="75.0" styleClass="date-box">
+                            <Label styleClass="date-month" text="NOV" />
+                            <Label styleClass="date-days" text="12-15" />
+                        </VBox>
+
+                           <!-- Details Box -->
+                        <VBox alignment="CENTER_LEFT" spacing="5.0">
+                            <!-- Title & Status -->
+                            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                <Label styleClass="room-title" text="Suite" />
+                                <Label styleClass="status-badge, status-confirmed" text="Confirmed" />
+                            </HBox>
+                            
+                               <!-- Booking ID -->
+                            <Label styleClass="booking-id" text="Booking ID: #AT-88492" />
+                            
+                               <!-- Location -->
+                            <HBox alignment="CENTER_LEFT" spacing="5.0">
+                                <FontIcon iconColor="#888888" iconLiteral="fas-map-marker-alt" iconSize="12" />
+                                <Label styleClass="location-text" text="Larpers Hotel, Maldives" />
+                            </HBox>
+                        </VBox>
+
+                           <Region HBox.hgrow="ALWAYS" />
+
+                           <!-- Actions Box -->
+                        <VBox alignment="CENTER_RIGHT" spacing="15.0">
+                            <Button styleClass="modify-btn" text="Modify" />
+                            <Label styleClass="view-details-link" text="View Details ›" />
+                        </VBox>
+                    </HBox>
+
+                       <!-- Reservation Card 2 -->
+                    <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="reservation-card">
+                        <!-- Date Box -->
+                        <VBox alignment="CENTER" prefHeight="75.0" prefWidth="75.0" styleClass="date-box">
+                            <Label styleClass="date-month" text="DEC" />
+                            <Label styleClass="date-days" text="24-28" />
+                        </VBox>
+
+                           <!-- Details Box -->
+                        <VBox alignment="CENTER_LEFT" spacing="5.0">
+                            <!-- Title & Status -->
+                            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                <Label styleClass="room-title" text="Single Room" />
+                                <Label styleClass="status-badge, status-processing" text="Processing" />
+                            </HBox>
+                            
+                               <!-- Booking ID -->
+                            <Label styleClass="booking-id" text="Booking ID: #AT-99210" />
+                            
+                               <!-- Location -->
+                            <HBox alignment="CENTER_LEFT" spacing="5.0">
+                                <FontIcon iconColor="#888888" iconLiteral="fas-map-marker-alt" iconSize="12" />
+                                <Label styleClass="location-text" text="Larpers Hotel, New York" />
+                            </HBox>
+                        </VBox>
+
+                           <Region HBox.hgrow="ALWAYS" />
+
+                           <!-- Actions Box -->
+                        <VBox alignment="CENTER_RIGHT" spacing="15.0">
+                            <Button styleClass="modify-btn" text="Modify" />
+                            <Label styleClass="view-details-link" text="View Details ›" />
+                        </VBox>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>
