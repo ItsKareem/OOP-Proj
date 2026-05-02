@@ -11,6 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
+
 <BorderPane stylesheets="@../CSS_files/guest_dashboard.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GuestDashboardController">
 
     <!-- MAIN CONTENT -->

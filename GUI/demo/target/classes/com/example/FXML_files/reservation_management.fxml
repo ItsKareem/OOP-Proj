@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane stylesheets="@../CSS_files/reservation_management.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GuestDashboardController">
+
+    <!-- MAIN CONTENT -->
+    <left>
+        <VBox prefHeight="559.0" prefWidth="194.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+
+            <VBox spacing="10">
+                <HBox alignment="CENTER_LEFT" spacing="10.0" styleClass="sidebar-header">
+                    <FontIcon iconColor="#1A5F7A" iconLiteral="fas-user-circle" iconSize="30" />
+                    <Label styleClass="logo-text" text="Guest Name">
+                        <font>
+                            <Font size="35.0" />
+                        </font>
+                    </Label>
+                </HBox>
+
+                <Label styleClass="sub-logo-text" />
+                <Button styleClass="sidebar-btn" text="Dashboard" />
+                <Button styleClass="sidebar-btn, active-btn" text="Reservations" />
+                <Button styleClass="sidebar-btn" text="Room Browsing" />
+                
+
+                <Region prefHeight="200.0" prefWidth="200.0" />
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS" />
+
+            <HBox spacing="10.0" styleClass="logout-btn-container">
+                <FontIcon iconColor="#1A5F7A" iconLiteral="fas-sign-out-alt" iconSize="22" />
+                <Button styleClass="logout-btn" text="Logout" />
+            </HBox>
+        </VBox>
+    </left>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+            <VBox spacing="30.0" styleClass="main-content-box">
+                <padding>
+                    <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                </padding>
+
+                <!-- 1. HEADER SECTION -->
+                <VBox spacing="15.0">
+                    <Label styleClass="portfolio-label" text="GUEST PORTFOLIO" />
+                    <HBox alignment="CENTER_LEFT">
+                        <VBox spacing="5.0">
+                            <Label styleClass="page-title" text="Reservation Ledger" />
+                            <Label styleClass="page-subtitle" text="Manage Your stay" wrapText="true" />
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button styleClass="new-res-btn" text="+ Make New Reservation" />
+                    </HBox>
+                </VBox>
+
+                <!-- 2. TOP CARDS SECTION -->
+                <HBox spacing="20.0">
+                    <!-- Left: Active Engagement -->
+                    <VBox spacing="20.0" styleClass="card-white" HBox.hgrow="ALWAYS">
+                        <!-- Header -->
+                        <HBox alignment="CENTER_LEFT" spacing="15.0">
+                            <HBox alignment="CENTER" styleClass="icon-box-gold">
+                                <FontIcon iconColor="#8b6b23" iconLiteral="fas-calendar-check" iconSize="18" />
+                            </HBox>
+                            <Label styleClass="section-title" text="Active Engagement" />
+                            <Region HBox.hgrow="ALWAYS" />
+                            <Label styleClass="badge-upcoming" text="UPCOMING" />
+                        </HBox>
+
+                        <!-- Inner Reservation Card System with Sliders -->
+                        <HBox alignment="CENTER" spacing="10.0">
+                            
+                            <!-- Left Slider Button -->
+                            <Button styleClass="slider-btn">
+                                <graphic>
+                                    <FontIcon iconColor="#1377a5" iconLiteral="fas-chevron-left" iconSize="18" />
+                                </graphic>
+                            </Button>
+
+                            <!-- Inner Reservation Card -->
+                            <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="inner-res-card" HBox.hgrow="ALWAYS">
+                                <!-- Image Placeholder -->
+                                <ImageView fitHeight="80.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../Images/suite1.jpg" />
+                                    </image>
+                                </ImageView>
+
+                                <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                    <HBox alignment="TOP_LEFT">
+                                        <VBox spacing="2.0">
+                                            <Label styleClass="room-name" text="Grand Atrium Suite" />
+                                            <Label styleClass="res-id" text="Reservation ID: #AC-98231" />
+                                        </VBox>
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <VBox alignment="TOP_RIGHT" spacing="0.0">
+                                            <Label styleClass="date-text" text="Oct 12 — Oct 18" />
+                                            <Label styleClass="nights-text" text="8 Nights • 2 Guests" />
+                                        </VBox>
+                                    </HBox>
+                                    
+                                    <HBox spacing="8.0">
+                                        <Label styleClass="badge-vip" text="VIP GUEST" />
+                                        <Label styleClass="badge-breakfast" text="BREAKFAST INCLUDED" />
+                                    </HBox>
+                                </VBox>
+                            </HBox>
+
+                            <!-- Right Slider Button -->
+                            <Button styleClass="slider-btn">
+                                <graphic>
+                                    <FontIcon iconColor="#1377a5" iconLiteral="fas-chevron-right" iconSize="18" />
+                                </graphic>
+                            </Button>
+
+                        </HBox>
+
+                        <!-- Footer Actions -->
+                        <HBox alignment="CENTER_RIGHT" spacing="20.0">
+                           
+                            <Button styleClass="cancel-btn">
+                                <graphic>
+                                    <HBox alignment="CENTER" spacing="5.0">
+                                        <FontIcon iconColor="#d33c44" iconLiteral="fas-times-circle" iconSize="12" />
+                                        <Label text="Cancel Reservation" textFill="#d33c44">
+                                            <font>
+                                                <Font name="System Bold" size="12.0" />
+                                            </font>
+                                        </Label>
+                                    </HBox>
+                                </graphic>
+                            </Button>
+                        </HBox>
+                    </VBox>
+
+                    <!-- Right: Yearly Volume -->
+                    
+                </HBox>
+
+                <!-- 3. ARCHIVED RECORDS -->
+                <VBox spacing="15.0" styleClass="card-white">
+                    <VBox spacing="3.0">
+                        <Label styleClass="section-title" text="Archived Records" />
+                        <Label styleClass="res-id" text="Review historical stays and financial summaries." />
+                    </VBox>
+
+                    <!-- Table Header -->
+                    <HBox alignment="CENTER_LEFT" styleClass="table-header-row">
+                        <Label prefWidth="180.0" styleClass="th-text" text="STAY DURATION">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin></Label>
+                        <Label prefWidth="250.0" styleClass="th-text" text="ACCOMMODATION" />
+                        <Label prefWidth="180.0" styleClass="th-text" text="STATUS" />
+                        <Label alignment="CENTER_RIGHT" maxWidth="Infinity" styleClass="th-text" text="TOTAL BILLING" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding></Label>
+                    </HBox>
+
+                    <!-- Row 1 -->
+                    <HBox alignment="CENTER_LEFT" styleClass="table-row">
+                        <VBox prefWidth="180.0" spacing="2.0">
+                            <Label styleClass="tr-title" text="Aug 05 — Aug 10, 2024" />
+                            <Label styleClass="tr-sub" text="5 Nights" />
+                        </VBox>
+                        
+                        <HBox alignment="CENTER_LEFT" prefWidth="250.0" spacing="12.0">
+                            <HBox alignment="CENTER" styleClass="table-icon-box">
+                                <FontIcon iconColor="#8898a8" iconLiteral="fas-couch" iconSize="16" />
+                            </HBox>
+                            <VBox spacing="2.0">
+                                <Label styleClass="tr-title" text="Pentahouse Suite #444" />
+                                <Label styleClass="tr-sub" text="Suite" />
+                            </VBox>
+                        </HBox>
+                        
+                        <HBox alignment="CENTER_LEFT" prefWidth="180.0" spacing="5.0">
+                            <FontIcon iconColor="#5b6f7a" iconLiteral="fas-check-circle" iconSize="12" />
+                            <Label styleClass="status-completed" text="COMPLETED" />
+                        </HBox>
+                        
+                        <Label alignment="CENTER_RIGHT" maxWidth="Infinity" styleClass="billing-amt" text="\$2,450.00" HBox.hgrow="ALWAYS" />
+                    </HBox>
+
+                    <!-- Row 2 -->
+                    <HBox alignment="CENTER_LEFT" styleClass="table-row">
+                        <VBox prefWidth="180.0" spacing="2.0">
+                            <Label styleClass="tr-title" text="May 21 — May 24, 2024" />
+                            <Label styleClass="tr-sub" text="3 Nights" />
+                        </VBox>
+                        
+                        <HBox alignment="CENTER_LEFT" prefWidth="250.0" spacing="12.0">
+                            <HBox alignment="CENTER" styleClass="table-icon-box">
+                                <FontIcon iconColor="#8898a8" iconLiteral="fas-user-friends" iconSize="16" />
+                            </HBox>
+                            <VBox spacing="2.0">
+                                <Label styleClass="tr-title" text="Room #76" />
+                                <Label styleClass="tr-sub" text="Double" />
+                            </VBox>
+                        </HBox>
+                        
+                        <HBox alignment="CENTER_LEFT" prefWidth="180.0" spacing="5.0">
+                            <FontIcon iconColor="#5b6f7a" iconLiteral="fas-check-circle" iconSize="12" />
+                            <Label styleClass="status-completed" text="COMPLETED" />
+                        </HBox>
+                        
+                        <Label alignment="CENTER_RIGHT" maxWidth="Infinity" styleClass="billing-amt" text="\$4,120.00" HBox.hgrow="ALWAYS" />
+                    </HBox>
+
+                    <!-- Row 3 -->
+                    <HBox alignment="CENTER_LEFT" style="-fx-border-width: 0;" styleClass="table-row">
+                        <VBox prefWidth="180.0" spacing="2.0">
+                            <Label styleClass="tr-title" text="Feb 14 — Feb 15, 2024" />
+                            <Label styleClass="tr-sub" text="1 Night" />
+                        </VBox>
+                        
+                        <HBox alignment="CENTER_LEFT" prefWidth="250.0" spacing="12.0">
+                            <HBox alignment="CENTER" styleClass="table-icon-box">
+                                <FontIcon iconColor="#8898a8" iconLiteral="fas-bed" iconSize="16" />
+                            </HBox>
+                            <VBox spacing="2.0">
+                                <Label styleClass="tr-title" text="Room #67" />
+                                <Label styleClass="tr-sub" text="Single" />
+                            </VBox>
+                        </HBox>
+                        
+                        <HBox alignment="CENTER_LEFT" prefWidth="180.0" spacing="5.0">
+                            <FontIcon iconColor="#d33c44" iconLiteral="fas-times-circle" iconSize="12" />
+                            <Label styleClass="status-cancelled" text="CANCELLED" />
+                        </HBox>
+                        
+                        <VBox alignment="CENTER_RIGHT" spacing="2.0" HBox.hgrow="ALWAYS">
+                            <Label styleClass="billing-amt" text="\$0.00" />
+                            <Label styleClass="tr-sub" text="VOIDED" />
+                        </VBox>
+                    </HBox>
+
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

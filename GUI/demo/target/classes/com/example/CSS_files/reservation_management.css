@@ -1,0 +1,306 @@
+@import url("main.css");
+
+.sidebar {
+  -fx-background-color: -neutral;
+  -fx-padding: 30 20;
+  -fx-border-color: #eaedf1;
+  -fx-border-width: 0 1 0 0;
+}
+
+.logo-text {
+  -fx-font-size: 18px;
+  -fx-font-weight: 800;
+  -fx-text-fill: #113448;
+}
+
+.sub-logo-text {
+  -fx-font-size: 12px;
+  -fx-text-fill: #8b9fac;
+  -fx-padding: 0 0 0 5;
+}
+
+.sidebar-btn {
+  -fx-background-color: transparent;
+  -fx-font-size: 14px;
+  -fx-font-weight: 500;
+  -fx-text-fill: #5b7384;
+  -fx-alignment: CENTER_LEFT;
+  -fx-padding: 12 15;
+  -fx-pref-width: 210;
+  -fx-cursor: hand;
+}
+
+.sidebar-btn:hover {
+  -fx-background-color: #f0f4f8;
+  -fx-background-radius: 8;
+}
+
+.active-btn {
+  -fx-text-fill: -my-primary-color;
+  -fx-font-weight: 700;
+  -fx-background-color: #f0f8fb;
+  -fx-background-radius: 8;
+  -fx-border-color: -my-primary-color;
+  -fx-border-width: 0 4 0 0;
+  -fx-border-radius: 8;
+}
+
+.logout-btn {
+  -fx-background-color: transparent;
+  -fx-text-fill: #5b7384;
+  -fx-font-size: 14px;
+  -fx-padding: 0;
+}
+.logout-btn-container {
+    
+    -fx-padding: 12 15;
+  -fx-pref-width: 210;
+  -fx-cursor: hand;
+}
+
+.logout-btn-container:hover {
+  -fx-background-color: #f0f4f8;
+  -fx-background-radius: 8;
+}
+
+/* MAIN CONTENT ROOT */
+.main-content-box {
+    -fx-background-color: -neutral;
+}
+
+.portfolio-label {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -my-primary-color;
+    -fx-text-wrap: true;
+}
+
+.page-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #112a46;
+}
+
+.page-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #667e8a;
+}
+
+.new-res-btn {
+    -fx-background-color: -my-primary-color;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-padding: 10 20;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+.new-res-btn:hover {
+    -fx-background-color: #0f4b61;
+}
+
+/* CARDS */
+.card-white {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 4);
+    -fx-padding: 25;
+}
+
+.card-grey {
+    -fx-background-color: #eaedf1;
+    -fx-background-radius: 8;
+    -fx-padding: 30;
+}
+
+/* ACTIVE ENGAGEMENT CARD */
+.icon-box-gold {
+    -fx-background-color: #deb887;
+    -fx-background-radius: 6;
+    -fx-padding: 8;
+}
+
+.section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1a2b3c;
+}
+
+.badge-upcoming {
+    -fx-background-color: #bce3fb;
+    -fx-text-fill: -my-primary-color;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 4 12;
+    -fx-background-radius: 12;
+}
+
+.inner-res-card {
+    -fx-background-color: -neutral;
+    -fx-background-radius: 8;
+    -fx-padding: 15;
+}
+
+.slider-btn {
+    -fx-background-color: transparent;
+    -fx-padding: 10 5;
+    -fx-cursor: hand;
+    -fx-background-radius: 6;
+}
+
+.slider-btn:hover {
+    -fx-background-color: #eaedf1;
+}
+
+.room-img-placeholder {
+    -fx-background-color: #2b3a4a;
+    -fx-background-radius: 6;
+    -fx-min-width: 160;
+    -fx-min-height: 100;
+}
+
+.room-name {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1a2b3c;
+}
+
+.res-id {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6b7a88;
+}
+
+.date-text {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #222222;
+}
+
+.nights-text {
+    -fx-font-size: 10px;
+    -fx-text-fill: #6b7a88;
+}
+
+.badge-vip {
+    -fx-background-color: #8b6b23;
+    -fx-text-fill: white;
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+    -fx-padding: 4 8;
+    -fx-background-radius: 4;
+}
+
+.badge-breakfast {
+    -fx-background-color: #d1e1f0;
+    -fx-text-fill: #4b6a88;
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+    -fx-padding: 4 8;
+    -fx-background-radius: 4;
+}
+
+.modify-link {
+    -fx-text-fill: -my-primary-color;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.cancel-btn {
+    -fx-background-color: transparent;
+    -fx-border-color: #f5c6cb;
+    -fx-border-radius: 6;
+    -fx-text-fill: #d33c44;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+}
+.cancel-btn:hover {
+    -fx-background-color: #fff0f1;
+}
+
+/* YEARLY VOLUME CARD */
+.vol-title {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4a5b6c;
+}
+.vol-number {
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -my-primary-color;
+}
+.vol-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6b7a88;
+}
+
+.loyalty-status-row {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4a5b6c;
+}
+.loyalty-tier {
+    -fx-text-fill: -my-primary-color;
+}
+
+.progress-bar-bg {
+    -fx-background-color: #dbe2e8;
+    -fx-background-radius: 2;
+}
+.progress-bar-fill {
+    -fx-background-color: -my-primary-color;
+    -fx-background-radius: 2;
+}
+
+/* ARCHIVED RECORDS (TABLE) */
+.table-header-row {
+    -fx-background-color: -neutral;
+    -fx-padding: 10 0;
+    -fx-border-color: transparent transparent #eaedf1 transparent;
+    -fx-border-width: 1;
+}
+.th-text {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #6b7a88;
+}
+
+.table-row {
+    -fx-padding: 15 0;
+    -fx-border-color: #eaedf1;
+    -fx-border-width: 0 0 1 0;
+}
+.table-icon-box {
+    -fx-background-color: #eaedf1;
+    -fx-background-radius: 6;
+    -fx-padding: 8;
+}
+
+.tr-title {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1a2b3c;
+}
+.tr-sub {
+    -fx-font-size: 10px;
+    -fx-text-fill: #6b7a88;
+}
+
+.status-completed {
+    -fx-text-fill: #5b6f7a;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+.status-cancelled {
+    -fx-text-fill: #d33c44;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.billing-amt {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1a2b3c;
+}
