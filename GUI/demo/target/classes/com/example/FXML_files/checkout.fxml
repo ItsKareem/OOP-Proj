@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<VBox styleClass="root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+    <!-- Header -->
+    <HBox styleClass="headerBox">
+        <HBox alignment="CENTER_LEFT" spacing="10" styleClass="exit-icon-box">
+            <FontIcon iconColor="#1A5F7A" iconLiteral="fas-arrow-left" iconSize="16" />
+        </HBox>
+        <Region HBox.hgrow="ALWAYS" />
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <Label styleClass="headerSubTitle" text="Secure Transaction Protocol" />
+            <FontIcon iconColor="#1A5F7A" iconLiteral="fas-shield-alt" iconSize="16" />
+            <Label styleClass="secureBadge" text="ENCRYPTED" />
+        </HBox>
+    </HBox>
+
+    <!-- Main Content -->
+    <HBox alignment="TOP_CENTER" spacing="30" styleClass="mainContainer">
+        
+        <!-- Left Side: Payment Form -->
+        <VBox spacing="20" styleClass="formContainer">
+            <VBox spacing="5" styleClass="sectionHeader">
+                <Label styleClass="mainTitle" text="Complete Reservation" />
+                <Label styleClass="subTitle" />
+            </VBox>
+
+            <Label styleClass="sectionTitle" text="Payment Method" />
+
+            <HBox spacing="15" styleClass="paymentOptions">
+                <VBox spacing="5" styleClass="paymentCard, selectedPayment">
+                    <HBox alignment="TOP_LEFT">
+                        <FontIcon iconColor="#1A5F7A" iconLiteral="fas-credit-card" iconSize="24" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <FontIcon iconColor="#1A5F7A" iconLiteral="fas-check-circle" iconSize="16" />
+                    </HBox>
+                    <Label styleClass="paymentTitle" text="Credit Card" />
+                    <Label styleClass="paymentSub" text="Visa, Mastercard, Amex" />
+                </VBox>
+                <VBox spacing="5" styleClass="paymentCard">
+                    <HBox alignment="TOP_LEFT">
+                        <StackPane>
+                           <FontIcon iconColor="#9CA3AF" iconLiteral="fab-paypal" iconSize="24" />
+                        </StackPane>
+                    </HBox>
+                    <Label styleClass="paymentTitle" text="PayPal" />
+                    <Label styleClass="paymentSub" text="Fast, secure checkout" />
+                </VBox>
+            </HBox>
+
+            <VBox spacing="15" styleClass="formBox">
+                <VBox spacing="5">
+                    <Label styleClass="inputLabel" text="CARDHOLDER NAME" />
+                    <TextField promptText="Johnny Joestar" styleClass="inputField" />
+                </VBox>
+                <VBox spacing="5">
+                    <Label styleClass="inputLabel" text="CARD NUMBER" />
+                    <TextField promptText="•••• •••• •••• 6767" styleClass="inputField" />
+                </VBox>
+                <HBox spacing="15">
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label styleClass="inputLabel" text="EXPIRY DATE" />
+                        <TextField promptText="MM / YY" styleClass="inputField" />
+                    </VBox>
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label styleClass="inputLabel" text="CVV" />
+                        <TextField promptText="• • •" styleClass="inputField" />
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <HBox spacing="10" styleClass="infoBox">
+                <FontIcon iconColor="#576067" iconLiteral="fas-info-circle" iconSize="20" />
+                <Label styleClass="infoText" text="Your payment is processed through an encrypted gateway. We do not store your full card details." wrapText="true" />
+            </HBox>
+        </VBox>
+
+        <!-- Right Side: Order Summary -->
+        <VBox spacing="0" styleClass="summaryContainer">
+            <StackPane styleClass="imageContainer">
+                <Region styleClass="placeholderImg" />
+                <Label styleClass="vipBadge" text="VIP SUITE 402" StackPane.alignment="TOP_LEFT" />
+            </StackPane>
+            
+            <VBox spacing="20" styleClass="summaryContent">
+                <VBox spacing="5">
+                    <Label styleClass="roomTitle" text="Architectural Atrium Suite" />
+                    <Label styleClass="roomSub" text="The Zenith Collection • Floor 04" />
+                </VBox>
+
+                <HBox alignment="CENTER" spacing="20">
+                    <VBox alignment="CENTER" spacing="5">
+                        <Label styleClass="dateLabel" text="CHECK IN" />
+                        <Label styleClass="dateValue" text="Oct 24, 2023" />
+                    </VBox>
+                    <Line endX="30" startX="0" stroke="#D1D5DB" />
+                    <VBox alignment="CENTER" spacing="5">
+                        <Label styleClass="dateLabel" text="CHECK OUT" />
+                        <Label styleClass="dateValue" text="Oct 28, 2023" />
+                    </VBox>
+                </HBox>
+
+                <VBox spacing="10">
+                    <HBox>
+                        <Label styleClass="billingLabel" text="4 Nights" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label styleClass="billingValue" text="\$6,000.00" />
+                    </HBox>
+                    <HBox>
+                        <Label styleClass="billingLabel" text="Service Fee" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label styleClass="billingValue" text="\$500.00" />
+                    </HBox>
+                    <HBox>
+                        <Label styleClass="billingLabel" text="Tax" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label styleClass="billingValue" text="\$167.00" />
+                    </HBox>
+                </VBox>
+
+                <HBox alignment="BOTTOM_LEFT" styleClass="totalBox">
+                    <VBox spacing="0">
+                        <Label styleClass="totalLabel" text="GRAND TOTAL" />
+                        <Label styleClass="totalValue" text="\$6,767.00" />
+                    </VBox>
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Label styleClass="currencyLabel" text="USD" />
+                </HBox>
+
+                <Button graphicTextGap="10" styleClass="confirmBtn" text="Confirm Payment">
+                    <graphic>
+                        <FontIcon iconColor="white" iconLiteral="fas-lock" iconSize="18" />
+                    </graphic>
+                </Button>
+                
+                <Label styleClass="footerText" text="By confirming, you agree to the Larpers Terms of Stay and cancellation policy." wrapText="true" />
+            </VBox>
+        </VBox>
+
+    </HBox>
+   <stylesheets>
+      <URL value="@../CSS_files/checkout.css" />
+      <URL value="@../CSS_files/main.css" />
+   </stylesheets>
+</VBox>
